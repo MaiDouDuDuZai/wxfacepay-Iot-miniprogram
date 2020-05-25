@@ -1,0 +1,73 @@
+<view class="cart">
+  <view class="list">
+    <van-cell wx:for="{{cart}}" wx:key="goods_id" size="large">
+        <image slot="icon" style="width: 30px; height: 30px; margin-right:10px; background-color: #eeeeee;" mode="aspectFill" src="{{item.cover_pic}}"></image>
+        <view slot="title">
+          {{item.goods_name}} <text style="color:#ee0a24">￥{{item.price}}</text>
+        </view>
+        <icon 
+          class="iconfont icon-minus-circle-o card-button" 
+          wx:if="{{item.cart_num}}" 
+          bindtap="minusCart" 
+          data-goods_id="{{item.goods_id}}"
+        ></icon>
+        <text class="card-num" wx:if="{{item.cart_num}}">{{item.cart_num}}</text>
+        <icon 
+          class="iconfont icon-add_fill card-button" 
+          bindtap="addCart" 
+          data-goods_id="{{item.goods_id}}"
+        ></icon>
+    </van-cell>
+  </view>
+</view>
+
+<van-submit-bar 
+  price="{{ total_price }}" 
+  button-text="结算" 
+  bind:submit="onSubmit"
+  custom-class="submit"
+  bar-class="submit-bar"
+  button-class="submit-button"
+  safe-area-inset-bottom
+>
+  <van-icon 
+    name="cart-circle" 
+    size="40px" 
+    info="{{total_num ? total_num : ''}}" 
+    custom-class="cart-button {{cart.length ? '' : 'disabled'}}"
+  />
+</van-submit-bar>
+
+<van-overlay show="{{ showPayOption }}" custom-style="z-index:100" bind:click="cancelSubmit">
+  <view class="payOption">
+    <view catch:tap="noop">
+      <button 
+        bindtap="confirm" 
+        data-biz_type="normal"
+        data-trade_type="face_code" 
+        type="warn"
+        loading="{{paying && biz_type == 'normal' && trade_type == 'face_code'}}"
+        style="margin-bottom: 10px;"
+      >
+        <icon class="iconfont icon-shualian" />刷脸支付
+      </button>
+      <button 
+        bindtap="confirm" 
+        data-biz_type="normal"
+        data-trade_type="bar_code" 
+        type="default" 
+        loading="{{paying && biz_type == 'normal' && trade_type == 'bar_code'}}"
+        style="margin-bottom: 10px;"
+      >
+        <icon class="iconfont icon-saoma" />扫码支付
+      </button>
+      <button 
+        bindtap="memberPay" 
+        data-biz_type="normal"
+        type="default"
+      >
+        <icon class="iconfont icon-vip" />会员支付
+      </button>
+    </view>
+  </view>
+</van-overlay>

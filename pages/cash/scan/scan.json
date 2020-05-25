@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "自助结账",
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#ee0a24",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "van-image": "@vant/weapp/image",
+    "van-button": "@vant/weapp/button",
+    "van-submit-bar": "@vant/weapp/submit-bar",
+    "van-icon": "@vant/weapp/icon",
+    "van-cell": "@vant/weapp/cell",
+    "van-overlay": "@vant/weapp/overlay"
+  }
+}

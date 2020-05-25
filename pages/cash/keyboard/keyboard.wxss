@@ -1,0 +1,41 @@
+page { background-color: #fff; }
+
+.wrap{ position: absolute; bottom: 0; width: 100%;}
+.totalAmount{
+  position: relative;
+  width:100%; height:400rpx; 
+  background: #ffffff;
+}
+.totalAmount text:before{ content:'￥'; font-size: 28px; margin-right:5px;}
+.totalAmount text{ 
+  text-align: right;  
+  line-height: 1; 
+  font-size: 48px; 
+  position: absolute; bottom: 20px; right: 20px;
+}
+.keyboard button{ 
+  border-radius: 0!important; border:none!important; 
+  height: 150rpx; line-height: 150rpx; font-size:30px; color:#333;
+}
+.keyboard button::after{ border-radius: 0!important; border:none!important;}
+.keyboard button icon{ font-size:30px;}
+.keyboard button[data-biz_type]{ height: 300rpx; font-size:18px; line-height: 40px; background: #f8f8f8;}
+.keyboard button[data-biz_type] icon{ 
+  font-size: 38px; color:#fff; display: block; background: #1aad19; margin: 40px auto 0;
+  width:75px; height: 75px; line-height: 75px; border-radius: 50%;}
+
+text.amount{ 
+  display: block; padding:120px 0 300px; position: relative;
+  font-size: 45px; text-align: center; text-indent:-10px;
+}
+text.amount::after{
+  content: '付款金额'; display: block; 
+  font-size: 15px; color: #888; text-indent: 0; font-weight: normal;
+  position: absolute; left: 50%; margin-left: -2em; top: 95px;
+}
+text.amount::before{
+  content: '￥'; font-size: 20px; font-weight: normal; padding-right: 5px; color: #888
+}
+
+.buttons{ display: block;}
+.buttons button{ width:80%; margin:10px auto 0; padding: 12px 24px;}

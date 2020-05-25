@@ -1,0 +1,42 @@
+<van-radio-group value="{{ active_mode.value }}">
+  <van-cell-group>
+    <van-cell
+      title="独立收银"
+      clickable
+      data-mode="1"
+      bind:click="modeChange"
+    >
+      <van-radio slot="right-icon" name="1" />
+    </van-cell>
+    <van-cell
+      title="自助下单"
+      clickable
+      data-mode="2"
+      bind:click="modeChange"
+    >
+      <van-radio slot="right-icon" name="2" />
+    </van-cell>
+    <van-cell
+      title="自助结账"
+      clickable
+      data-mode="3"
+      bind:click="modeChange"
+    >
+      <van-radio slot="right-icon" name="3" />
+    </van-cell>
+  </van-cell-group>
+</van-radio-group>
+
+<block wx:if="{{active_mode.value==2}}">
+  <view class="page-section-title">菜单样式</view>
+  <van-radio-group value="{{items[1].viewMode}}">
+    <van-cell-group>
+      <van-cell title="分类" clickable data-viewmode="1" bind:click="viewModeChange">
+        <van-radio slot="right-icon" name="1" />
+      </van-cell>
+      <van-cell title="列表" clickable data-viewmode="2" bind:click="viewModeChange">
+        <van-radio slot="right-icon" name="2" />
+      </van-cell>
+    </van-cell-group>
+  </van-radio-group>
+</block>

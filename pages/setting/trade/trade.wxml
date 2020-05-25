@@ -1,0 +1,47 @@
+<van-search
+  value="{{ filter.out_trade_no }}"
+  placeholder="请输入订单号"
+  use-action-slot
+  bind:change="onSearchChange"
+  bind:search="onSearch"
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+
+<view>
+		<van-cell-group>
+			<block wx:for="{{items}}" wx:key="order_id" wx:for-index="index">
+				<van-cell
+          title="{{( item.trade_type == 'face_code' ? '刷脸' : '扫码' )}}"
+          label="{{item.time_create_format}}"
+					bind:click="onItemClick"
+          data-out_trade_no="{{item.out_trade_no}}"
+          data-index="{{index}}"
+				>
+            {{'￥' + item.total_amount}}
+            <text class="status-{{item.trade_status}}">{{trade_status_text[item.trade_status]}}</text>
+			 </van-cell>
+			</block> 
+		</van-cell-group>
+    <view style="text-align:center; padding:15px 0;">
+      <view wx:if="{{loadMore == 'over'}}" style="color:#969799; font-size:14px;">
+        没有更多了~
+      </view>
+      <block wx:else>
+        <van-loading size="24px">加载中...</van-loading>
+      </block>
+    </view>
+</view>
+<van-popup show="{{showBottom}}" position="bottom" bind:close="onPopupClose" animation="{{false}}">
+  <view class="box bottom">
+    <text>订单号: {{selected_order.out_trade_no}}</text>
+    <view class="operation">
+      <button type="warn" bindtap="refund">退款</button>
+    </view>
+  </view>
+</van-popup>
+
+<prompt id="prompt" 
+    title='请输入密码' 
+    bind:confirm="confirmPrompt">
+</prompt>

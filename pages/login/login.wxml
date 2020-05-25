@@ -1,0 +1,19 @@
+<view class="wrap">
+  <van-cell-group>
+    <van-field
+      value="{{API_URL}}"
+      placeholder="请输入域名(不带https://)"
+      label="系统域名"
+      bind:change="onInputApiurl"
+    />
+    <van-field
+      value="{{per_phone}}"
+      placeholder="请输入店员手机号"
+      label="店员账号"
+      type="number"
+      bind:change="onInputPerphone"
+    />
+  </van-cell-group>
+  <button type="primary" bindtap="onLogin" data-value="登录" style="margin-top:10px; width:100%">登录</button>
+  <view style="text-align:center; color:#cdcdcd; padding:1em 0; font-size:small; position:absolute; left:0; bottom:0; width:100%;">IoT小程序 v{{version}}</view>
+</view>

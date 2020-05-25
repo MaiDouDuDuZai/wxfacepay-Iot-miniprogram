@@ -1,0 +1,13 @@
+page{ padding: 20px; box-sizing: border-box; background: #fff; overflow: hidden;}
+.card{ position: relative; height: 232px; background-size: 100% 100%;}
+.card .sub{ color: #fff; padding: 10px; line-height: 30px;}
+.card .sub .logo{ width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; vertical-align: middle;}
+.card .sub > text{ display: inline-block; line-height: 0;}
+.card .sub .sub_title{ margin-top:0px; font-size: 10px; background-color: rgba(0,0,0,0.2); padding: 0 3px; border-radius: 2px;}
+.info{ background: #fff; height: 9999px;}
+.info .balance{ display: flex; padding: 30px 0; font-size: 16px; color: gray;}
+.info .balance view{ text-align: center; display: block; width: 100%;}
+.info .balance view text{ display: block; color: #06AE56; font-size: 28px; padding-top:10px;}
+.info .balance view:first-child{ border-right: 1px solid #ccc;}
+.info button{ border: 1px solid #06AE56; background: none; color:#06AE56;}
+.qrcode-btn{ text-align:center; left:0px; width:100%; text-decoration:underline; color:#06AE56; bottom:25px; position:absolute; }

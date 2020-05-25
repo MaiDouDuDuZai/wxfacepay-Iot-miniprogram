@@ -1,0 +1,33 @@
+.swiper-container {
+  width: 750rpx;
+  height: 1200rpx;
+  display: block;
+}
+swiper {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+swiper-item image {
+  width: 750rpx;
+  height: 1200rpx;
+  display: block;
+}
+
+.tip {
+  display: flex;
+  color: #555;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  left: 0; bottom: 80rpx;
+}
+.tip text.large{
+  display: block;
+  font-size: 45rpx; color:#06AE56;
+}
+.tip button{ display: block; width:100%; height: 60px; line-height: 60px; margin-left:20rpx; font-size:25px;}
+.tip button:last-child{ margin-right:20rpx;}
+
+.websocket-online{ color: #fff; position: fixed; left: 10px; top: 0px; line-height: 44px;}
+.websocket-online text{ top:2px; position:relative; font-size:8px; }

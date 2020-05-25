@@ -1,0 +1,218 @@
+<van-row>
+  <van-col span="{{ viewMode == '1' ? 6 : 0 }}">
+    <van-sidebar active-key="{{ activeKey }}" bind:change="onChangeSidebar" custom-class="sidebar">
+        <van-sidebar-item wx:for="{{cats}}" wx:key="cat_id" title="{{item.cat_name}}" />
+    </van-sidebar>
+  </van-col>
+  <van-col span="{{ viewMode == '1' ? 18 : 24 }}">
+    <scroll-view wx:if="{{ viewMode == '1' }}" scroll-y="true" class="goods-cat" scroll-into-view="{{toView}}">
+      <block wx:for="{{cats}}" wx:for-item="cat" wx:for-index="cat_index" wx:key="cat_id">
+        <van-divider 
+          id="cat_{{cat.cat_id}}" 
+          contentPosition="center" 
+          custom-style="background:#fff;margin-left:16px">
+          {{cat.cat_name}}
+        </van-divider>
+        <van-card 
+          wx:for="{{cat.goods}}" wx:for-index="goods_index" wx:key="goods_id"
+          price="{{item.price}}" 
+          desc="{{item.desc}}" 
+          title="{{item.goods_name}}"
+        >
+          <van-image slot="thumb" width="90" height="90" src="{{item.cover_pic}}" />
+          <view slot="footer">
+            <block wx:if="{{item.use_attr == '0'}}">
+              <icon 
+                class="iconfont icon-minus-circle-o card-button" 
+                wx:if="{{item.cart_num}}" 
+                bindtap="minusCart" 
+                data-goods_id="{{item.goods_id}}"
+              ></icon>
+              <text slot="num" class="card-num" wx:if="{{item.cart_num}}">{{item.cart_num}}</text>
+              <icon 
+                class="iconfont icon-add_fill card-button" 
+                bindtap="addCart" 
+                data-goods_id="{{item.goods_id}}"
+              ></icon>
+            </block>
+            <block wx:else>
+              <button 
+                size="mini" 
+                class="sku-pick-btn" 
+                bindtap="showSkuPanel" 
+                data-goods_id="{{item.goods_id}}"
+              >选规格</button>
+              <text wx:if="{{item.cart_num > 0}}" class="cart-num-badge">{{item.cart_num}}</text>
+            </block>
+          </view>
+        </van-card>
+      </block>
+      <view style="height:20px"></view>
+    </scroll-view>
+    <scroll-view wx:else scroll-y="true" class="goods-list">
+      <van-card  
+        wx:for="{{goods}}" wx:for-index="goods_index" wx:key="goods_id"
+        tag="{{item.hot_cakes==0 ? '' : '热销'}}"
+        price="{{item.price}}" 
+        desc="{{item.desc}}" 
+        title="{{item.goods_name}}"
+      >
+        <van-image slot="thumb" width="90" height="90" src="{{item.cover_pic}}" />
+        <view slot="footer">
+          <block wx:if="{{item.use_attr == '0'}}">
+            <icon 
+              class="iconfont icon-minus-circle-o card-button" 
+              wx:if="{{item.cart_num}}" 
+              bindtap="minusCart" 
+              data-goods_id="{{item.goods_id}}"
+            ></icon>
+            <text slot="num" class="card-num" wx:if="{{item.cart_num}}">{{item.cart_num}}</text>
+            <icon 
+              class="iconfont icon-add_fill card-button" 
+              bindtap="addCart" 
+              data-goods_id="{{item.goods_id}}"
+            ></icon>
+          </block>
+          <block wx:else>
+            <button 
+              size="mini" 
+              class="sku-pick-btn" 
+              bindtap="showSkuPanel" 
+              data-goods_id="{{item.goods_id}}"
+            >选规格</button>
+            <text wx:if="{{item.cart_num > 0}}" class="cart-num-badge">{{item.cart_num}}</text>
+          </block>
+        </view>
+      </van-card>
+    </scroll-view>
+  </van-col>
+</van-row>
+
+<view class="cart" wx:if="{{cartPanel.show}}">
+  <view class="mask" bindtap="toggleCart"></view>
+  <view class="list">
+    <van-cell 
+      wx:for="{{cartPanel.cart}}" wx:key="goods_id"
+      icon="{{item.cover_pic}}" 
+      size="large"
+      >
+        <view slot="title">
+          {{item.goods_name}} <text style="color:#ee0a24">￥{{item.price}}</text>
+        </view>
+        <icon 
+          class="iconfont icon-minus-circle-o card-button" 
+          wx:if="{{item.cart_num}}" 
+          bindtap="minusCart" 
+          data-goods_id="{{item.goods_id}}"
+          data-attr="{{item.attr}}"
+        ></icon>
+        <text class="card-num" wx:if="{{item.cart_num}}">{{item.cart_num}}</text>
+        <icon 
+          class="iconfont icon-add_fill card-button" 
+          bindtap="addCart" 
+          data-goods_id="{{item.goods_id}}"
+          data-attr="{{item.attr}}"
+        ></icon>
+    </van-cell>
+  </view>
+</view>
+
+<van-submit-bar 
+  price="{{ total_price }}" 
+  button-text="结算" 
+  bind:submit="onSubmit"
+  custom-class="submit"
+  bar-class="submit-bar"
+  button-class="submit-button"
+  safe-area-inset-bottom
+>
+  <van-icon 
+    name="cart-circle" 
+    size="40px" 
+    info="{{total_num ? total_num : ''}}" 
+    bind:click="toggleCart"
+    custom-class="cart-button {{cartPanel.cart.length ? '' : 'disabled'}}"
+  />
+</van-submit-bar>
+
+<van-overlay show="{{ showPayOption }}" custom-style="z-index:100" bind:click="cancelSubmit">
+  <view class="payOption">
+    <view catch:tap="noop">
+      <button 
+        bindtap="confirm" 
+        data-biz_type="normal"
+        data-trade_type="face_code" 
+        type="warn"
+        loading="{{paying && biz_type == 'normal' && trade_type == 'face_code'}}"
+        style="margin-bottom: 10px;"
+      >
+        <icon class="iconfont icon-shualian" />刷脸支付
+      </button>
+      <button 
+        bindtap="confirm" 
+        data-biz_type="normal"
+        data-trade_type="bar_code" 
+        type="default" 
+        loading="{{paying && biz_type == 'normal' && trade_type == 'bar_code'}}"
+        style="margin-bottom: 10px;"
+      >
+        <icon class="iconfont icon-saoma" />扫码支付
+      </button>
+      <button 
+        bindtap="memberPay" 
+        data-biz_type="normal"
+        type="default"
+      >
+        <icon class="iconfont icon-vip" />会员支付
+      </button>
+    </view>
+  </view>
+</van-overlay>
+
+<van-overlay 
+  show="{{ skuPanel.show }}" 
+  bind:click="hideSkuPanel"
+>
+  <view class="sku-panel-wrapper">
+    <view catch:tap="noop">
+      <view class="header" style="text-align:left;">{{skuPanel.title}}</view>
+      <view class="sku-panel">
+        <view wx:for="{{skuPanel.group}}" wx:for-index="group_name" wx:for-item="attrs" wx:key="index">
+          <view style="color:rgba(0,0,0,.5); padding:6px 0 5px;">{{group_name}}</view>
+          <button 
+            wx:for="{{attrs}}"
+            wx:for-index="attr_index"
+            wx:for-item="attr" 
+            wx:key="name"
+            data-group_name="{{group_name}}"
+            data-attr_index="{{attr_index}}"
+            bindtap="pick_attr" 
+            type="{{attr.active ? 'warn' : 'default'}}"
+            size="mini"
+            style="margin-right:8px;"
+          >{{attr.name}}</button>
+        </view>
+        <view style="padding-top:15px;"><text style="color:rgba(0,0,0,.5)">当前规格：</text>{{skuPanel.cur_sku.path}}</view>
+      </view>
+      <view class="footer" style="text-align:left;">
+        <text style="color: #ee0a24; font-size:large;">￥{{skuPanel.cur_sku.data.price}}</text>
+        <view style="float:right;">
+          <text 
+            class="iconfont icon-minus-circle-o card-button" 
+            wx:if="{{skuPanel.cur_sku.data.cart_num}}" 
+            bindtap="minusCart" 
+            data-goods_id="{{skuPanel.goods_id}}"
+            data-attr="{{skuPanel.cur_sku.path}}"
+          ></text>
+          <text slot="num" class="card-num" wx:if="{{skuPanel.cur_sku.data.cart_num}}">{{skuPanel.cur_sku.data.cart_num}}</text>
+          <text 
+            class="iconfont icon-add_fill card-button" 
+            bindtap="addCart" 
+            data-goods_id="{{skuPanel.goods_id}}"
+            data-attr="{{skuPanel.cur_sku.path}}"
+          ></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-overlay>

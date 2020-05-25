@@ -1,0 +1,7 @@
+.wrap{ 
+  padding:78px 10px 0;
+}
+
+button{
+  width:auto;
+}

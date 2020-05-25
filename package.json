@@ -1,0 +1,19 @@
+{
+  "name": "wx-iot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.tryyun.net/befen/wx-iot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.0.1",
+    "weui-miniprogram": "^0.2.2"
+  }
+}

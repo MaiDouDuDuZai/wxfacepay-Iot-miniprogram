@@ -1,0 +1,95 @@
+<view class="keyboard-style" wx:if="{{style == 'keyboard'}}">
+  <view class="totalAmount">
+    <text>{{totalAmount}}</text>
+  </view>
+  <view class="keyboard">
+    <van-row>
+      <van-col span="18">
+        <van-row>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="1">1</button></van-col>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="2">2</button></van-col>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="3">3</button></van-col>
+        </van-row>
+        <van-row>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="4">4</button></van-col>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="5">5</button></van-col>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="6">6</button></van-col>
+        </van-row>
+        <van-row>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="7">7</button></van-col>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="8">8</button></van-col>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="9">9</button></van-col>
+        </van-row>
+        <van-row>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value=".">.</button></van-col>
+          <van-col span="8"><button bindtap="onTotalAmountChange" data-value="0">0</button></van-col>
+          <van-col span="8">
+            <button bindtap="onDel" data-value="删除">
+              <icon class="iconfont icon-backspace" />
+            </button>
+          </van-col>
+        </van-row>
+      </van-col>
+      <van-col span="6">
+          <button 
+            bindtap="confirm" 
+            data-biz_type="normal"
+            data-trade_type="face_code" 
+            type="primary" 
+            loading="{{paying && biz_type == 'normal' && trade_type == 'face_code'}}" 
+          >
+            <icon class="iconfont icon-shualian"></icon>刷脸支付
+          </button>
+          <button 
+            bindtap="confirm" 
+            data-biz_type="normal"
+            data-trade_type="bar_code" 
+            type="default" 
+            loading="{{paying && biz_type == 'normal' && trade_type == 'bar_code'}}" 
+          >
+            <icon class="iconfont icon-saoma"></icon>扫码支付
+          </button>
+          <button 
+            bindtap="memberPay" 
+            data-biz_type="normal"
+            type="default" 
+          >
+            <icon class="iconfont icon-vip" style="background:#e3ae75"></icon>会员支付
+          </button>
+      </van-col>
+    </van-row>
+  </view>
+</view>
+
+<view wx:if="{{style == 'simple'}}" class="simple-style">
+  <text class="amount">{{totalAmount}}</text>
+  <view class="buttons">
+    <button 
+      bindtap="confirm" 
+      data-biz_type="normal"
+      data-trade_type="face_code" 
+      type="primary" 
+      loading="{{paying && biz_type == 'normal' && trade_type == 'face_code'}}" 
+    >
+      <icon class="iconfont icon-shualian"></icon> 刷脸支付
+    </button>
+    <button 
+      bindtap="confirm" 
+      data-biz_type="normal"
+      data-trade_type="bar_code" 
+      type="default" 
+      loading="{{paying && biz_type == 'normal' && trade_type == 'bar_code'}}" 
+    >
+      <icon class="iconfont icon-saoma"></icon> 扫码支付
+    </button>
+  </view>
+</view>
+
+<van-overlay show="{{paying && biz_type == 'normal' && trade_type == 'bar_code'}}" bind:click="cancelPay">
+  <view style="display: flex;align-items: center;justify-content: center;height: 100%;">
+    <view style="background-color: #fff;text-align: center;font-size: 20px;padding: 25px 35px 35px;">
+      <icon class="iconfont icon-saoma" style="font-size: 113px;display: block;margin-bottom: 10px;" />
+      上方扫码
+    </view>
+  </view>
+</van-overlay>

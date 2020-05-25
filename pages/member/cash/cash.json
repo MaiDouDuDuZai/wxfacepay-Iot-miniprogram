@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "default",
+  "usingComponents": {
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "charge": "/components/charge/charge",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
+  }
+}

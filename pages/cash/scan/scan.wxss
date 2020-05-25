@@ -1,0 +1,26 @@
+page{background:#fafafa;}
+.van-card{ background:#fff!important;}
+
+.card-button{ font-size:23px; vertical-align: middle; color:#ee0a24;}
+.card-num{ display: inline-block; line-height: 27px; font-size:16px; padding: 0 .5em; vertical-align: middle;}
+
+.goods-list{ height:1008rpx; background:#fff;}
+
+/* .submit{ width:457px!important;} */
+/* .submit-bar{ width:200px;} */
+/* .submit-button{ width:110px!important;} */
+
+.cart{ width:100%; height: 100%; background: #fff;}
+.cart .list{ 
+  margin-bottom:50px; 
+  width:100%;
+  padding: 15px 0;
+  background: #fff;
+}
+  .cart-button{ color:#ee0a24;margin-left:20px;}
+  .cart-button.disabled{ color:grey;}
+
+  .payOption{display: flex;align-items: center;justify-content: center;height: 100%;}
+  .payOption > view{background-color: #fff; padding:20px 30px; border-radius:15px;}
+  .payOption button{font-size: 22px;padding:0 1em;letter-spacing: 5px;}
+  .payOption button icon{ margin-right:.5em; font-size: 22px;}

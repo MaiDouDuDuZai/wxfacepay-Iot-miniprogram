@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "设置",
+  "navigationStyle": "default",
+  "usingComponents":{
+    "van-card": "@vant/weapp/card",
+    "van-cell": "@vant/weapp/cell",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-dialog": "@vant/weapp/dialog",
+    "van-button": "@vant/weapp/button"
+  }
+}

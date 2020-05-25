@@ -1,0 +1,28 @@
+page{ background: #fff; padding:35px 0 0;}
+
+.message {
+	background-color: #fff;
+	padding: 30px 15px;
+	text-align: center;
+	height: 199px;
+	box-sizing: border-box;
+	position: relative
+}
+
+.message-main {
+	font-size: 20px;
+	margin: 16px 0 9px;
+	line-height: 28px
+}
+.message-sub {
+	padding: 0 30px;
+	font-size: 14px;
+	line-height: 19px;
+	margin-top: 6px;
+	color: #999
+}
+.mainButton {
+  position: absolute; left: 10px; top:28px; color:rgb(153, 153, 153);
+}
+.mainButton::before { content: 'ｘ '; font-size: large;}
+.mainButton.disabled::before{ content: ' '; }

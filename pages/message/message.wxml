@@ -1,0 +1,25 @@
+  <view class="message">
+    <icon size="{{type === 'success' ? 45 : 64}}" type="{{type === 'fail' ? 'cancel' : type}}" />
+    <view class="message-main">
+      {{title}}
+    </view>
+    <view wx:if="{{subTitle}}" class="message-sub">
+      {{subTitle}}
+    </view>
+  </view>
+  <view 
+    class="mainButton {{messageButton.mainButton.disabled ? 'disabled' : ''}}"
+    bindtap="onTapMain"
+  >
+    {{messageButton.mainButton.buttonText}}
+  </view>
+
+  <block wx:if="{{mchHasMemberCard && order.status == 2 && order.trade_type == 'card'}}">
+    <van-cell-group wx:if="{{member}}">
+      <van-cell title="卡号" value="{{member.card_no}}" />
+      <van-cell title="积分" value="{{member.credit}}" />
+      <van-cell title="余额" value="{{member.balance}}" />
+    </van-cell-group>
+  </block>
+
+  <image mode="aspectFill" src="{{ads}}" style="width:800rpx; height:400rpx; position:absolute; bottom:0;" />

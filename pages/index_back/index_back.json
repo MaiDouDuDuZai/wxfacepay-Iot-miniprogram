@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "收银员主页(后屏)",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon",
+    "van-row": "@vant/weapp/row",
+    "van-col": "@vant/weapp/col",
+    "prompt": "/components/prompt/index"
+  }
+}

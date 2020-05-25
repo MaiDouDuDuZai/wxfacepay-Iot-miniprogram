@@ -1,0 +1,28 @@
+<mp-dialog 
+  title="充值金额" 
+  show="{{show}}" 
+  bindbuttontap="hide" 
+  bindclose="hide"
+  buttons="{{[{text: '取消'}]}}"
+>
+  <view class="plan">
+    <block wx:if="{{card_charge.length}}">
+      <button 
+        wx:for="{{card_charge}}" 
+        wx:key="id"
+        class="btn" 
+        bindtap="confirm" 
+        loading="{{charge_id == item.id && paying}}"
+        data-id="{{item.id}}"
+        data-pay_amount="{{item.pay_amount}}"
+        data-send_amount="{{item.send_amount}}"
+      >
+        <image mode="scaleToFill" src="/image/gift.png"/>
+        充<text>{{item.pay_amount}}</text>送<text>{{item.send_amount}}</text>
+      </button>
+    </block>
+    <block wx:else>
+      暂无充值方案
+    </block>
+  </view>
+</mp-dialog>

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "打印设置",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "input-item": "mini-antui/es/input-item/index",
+    "stepper": "mini-antui/es/stepper/index",
+    "list": "mini-antui/es/list/index",
+    "list-item": "mini-antui/es/list/list-item/index",
+    "modal": "mini-antui/es/modal/index"
+  }
+}

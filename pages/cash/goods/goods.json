@@ -1,0 +1,19 @@
+{
+  "navigationBarTitleText": "自助下单",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "van-sidebar": "@vant/weapp/sidebar",
+    "van-sidebar-item": "@vant/weapp/sidebar-item",
+    "van-card": "@vant/weapp/card",
+    "van-row": "@vant/weapp/row",
+    "van-col": "@vant/weapp/col",
+    "van-image": "@vant/weapp/image",
+    "van-divider": "@vant/weapp/divider",
+    "van-button": "@vant/weapp/button",
+    "van-submit-bar": "@vant/weapp/submit-bar",
+    "van-icon": "@vant/weapp/icon",
+    "van-cell": "@vant/weapp/cell",
+    "van-overlay": "@vant/weapp/overlay",
+    "van-tag": "@vant/weapp/tag"
+  }
+}

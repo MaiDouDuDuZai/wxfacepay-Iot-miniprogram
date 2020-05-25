@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "收银台",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "navbar": "/components/navbar/index",
+    "van-row": "@vant/weapp/row",
+    "van-col": "@vant/weapp/col",
+    "van-overlay": "@vant/weapp/overlay",
+    "van-icon": "@vant/weapp/icon"
+  }
+}

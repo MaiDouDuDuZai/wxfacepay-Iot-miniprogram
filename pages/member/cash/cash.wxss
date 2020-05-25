@@ -1,0 +1,10 @@
+page{ background: #fff;}
+.head{ text-align: center;}
+.head .amount{ font-size: 35px; font-weight: bold; margin-top:5px;}
+.card_info{ margin:55px 20px}
+.btn-group{ position: absolute; bottom:20px; width: 100%;}
+.btn-group button{ margin:0 20px 15px;}
+
+.crown{ display: block; width: 120rpx; height: 120rpx; margin: 10px auto 28px; border: 2px solid rgba(0,0,0,.1); border-radius: 50%;}
+
+.weui-cells__group{ border-top:1rpx solid rgba(0,0,0,0.1); border-bottom:1rpx solid rgba(0,0,0,0.1); }

@@ -1,0 +1,33 @@
+<view class="card">
+  <image mode="scaleToFill" src="{{card_bg}}" style="position:absolute; left:0; top:0; z-index:-1; width:100%; height:100%; background:{{card_color}}; border-radius:11px;" />
+  <view class="sub">
+    <image class="logo" mode="scaleToFill" src="{{card_logo}}" />
+    <text>
+      {{card_title}}
+    </text>
+  </view>
+</view>
+<view class="info">
+  <view class="balance">
+    <view>
+      积分<text>{{credit}}</text>
+    </view>
+    <view>
+      余额<text>{{balance}}元</text>
+    </view>
+  </view>
+  <button wx:if="{{is_charge == 1}}" size="default" type="ghost" bindtap="showCharge" style="border-radius:5px;">立即充值</button>
+  <view bindtap="showCardActiveQrcode" class="qrcode-btn">领取到微信卡包</view>
+</view>
+
+<charge id="chargeComponent" bindchargeSuccess="onChargeSuccess" card_no="{{card_no}}" />
+
+<mp-dialog
+  title="手机微信扫码领卡"
+  show="{{showCardActiveQrcode}}"
+  bindbuttontap="hideCardActiveQrcode"
+  bindclose="hideCardActiveQrcode"
+  buttons="{{[{text: '取消'}]}}"
+>
+  <canvas style="width: 200px; height: 200px; margin: 0 auto;" canvas-id="myQrcode"></canvas>
+</mp-dialog>

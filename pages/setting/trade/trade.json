@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "交易记录",
+  "navigationStyle": "default",
+  "usingComponents":{
+    "van-cell": "@vant/weapp/cell",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-popup": "@vant/weapp/popup",
+    "van-loading": "@vant/weapp/loading",
+    "van-search": "@vant/weapp/search",
+    "prompt": "/components/prompt/index"
+  }
+}

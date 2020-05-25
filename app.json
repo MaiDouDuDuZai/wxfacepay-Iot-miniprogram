@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/index_back/index_back",
+    "pages/cash/cash",
+    "pages/cash/keyboard/keyboard",
+    "pages/setting/mode/mode",
+    "pages/cash/scan/scan",
+    "pages/setting/setting",
+    "pages/message/message",
+    "pages/cash/goods/goods",
+    "pages/setting/trade/trade",
+    "pages/member/card/card",
+    "pages/member/cash/cash"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于展示附近的门店"
+    }
+  }
+}

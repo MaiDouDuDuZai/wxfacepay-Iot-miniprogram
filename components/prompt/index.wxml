@@ -1,0 +1,10 @@
+<view class="prompt-box" hidden="{{isHidden}}">
+    <view class="prompt-content contentFontColor">
+        <view class="prompt-title">{{title}}</view>
+        <input class="prompt-input" type="number" bindinput="_input" focus="{{true}}" value="{{cost}}" />
+        <view class="prompt-btn-group">
+            <button class="btn-item prompt-cancel-btn contentFontColor" bind:tap="_cancel">{{btn_cancel}}</button>
+            <button class="btn-item prompt-certain-btn" bind:tap="_confirm">{{btn_certain}}</button>
+        </view>
+    </view>
+</view>

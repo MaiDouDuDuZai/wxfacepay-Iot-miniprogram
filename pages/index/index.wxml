@@ -1,0 +1,51 @@
+<video
+  wx:if="{{adsType=='video'}}"
+  id="myVideo" 
+  style="width:750rpx; height:1200rpx"
+  src="{{video.src}}" 
+  controls="{{false}}"
+  loop="{{true}}"
+  muted="{{false}}"
+  show-fullscreen-btn="{{false}}"
+  show-play-btn="{{false}}"
+  show-center-play-btn="{{false}}"
+  object-fit="fill"
+  autoplay="{{true}}"
+  initial-time="0"
+  bindtap="wakeup"
+  binderror="onError"
+  enable-progress-gesture="{{false}}"
+/>
+<view wx:else style="height:100%">
+  <view class="swiper-container">
+    <swiper duration="{{duration}}" interval="{{interval}}" autoplay="{{autoplay}}" circular="{{circular}}">
+      <swiper-item wx:for="{{swiperData}}" wx:key="*this">
+        <image src="{{item}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="tip">
+    <button wx:if="{{mode.value == 1}}" type="primary" bindtap="gotoCash">刷脸支付</button>
+    <button wx:if="{{mode.value == 2}}" type="primary" bindtap="gotoGoods">自助下单</button>
+    <button wx:if="{{mode.value == 3}}" type="primary" bindtap="gotoScan">自助结账</button>
+    <button wx:if="{{merchant.hasMemberCard || true}}" 
+      open-type="getUserInfo" 
+      bindgetuserinfo="joinMember" 
+      type="primary" 
+    >领取会员卡</button>
+  </view>
+</view> 
+
+<view class="hidden-button-group">
+  <button style="height: {{30 + navTop}}px; left:0;" bindtap="logout" hover-class="hidden-hover-button"></button>
+  <button style="height: {{30 + navTop}}px; left:300px;" bindtap="gotoSetting" hover-class="hidden-hover-button"></button>
+</view>
+
+<prompt id="prompt" 
+    title='请输入密码' 
+    bind:confirm="confirmPrompt">
+</prompt>
+
+<view wx:if="{{isWebsocketOnline}}" class="iconfont icon-yunlaba websocket-online">
+  <text>{{voiceQueueLength || ''}}</text>
+</view>

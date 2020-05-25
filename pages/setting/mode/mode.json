@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "收银模式",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "van-radio": "@vant/weapp/radio",
+    "van-radio-group": "@vant/weapp/radio-group",
+    "van-cell": "@vant/weapp/cell",
+    "van-cell-group": "@vant/weapp/cell-group"
+  }
+}

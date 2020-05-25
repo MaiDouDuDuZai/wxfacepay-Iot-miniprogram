@@ -1,0 +1,12 @@
+<view class="wrap">
+  <van-row>
+    <van-col span="8" offset="3">
+      <button type="primary" bindtap="showPrompt"><van-icon name="setting-o" /> 设置</button>
+    </van-col>
+    <van-col span="8" offset="2">
+      <button type="warn" bindtap="gotoCash"><van-icon name="bill-o" /> 收银</button>
+    </van-col>
+  </van-row>
+</view>
+
+<prompt id="prompt" title='请输入密码' bind:confirm="confirmPrompt"></prompt>

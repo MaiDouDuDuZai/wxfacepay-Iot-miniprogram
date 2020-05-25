@@ -1,0 +1,19 @@
+<view class="head">
+  <view style="text-align:center;">欢迎使用会员支付</view>
+  <!-- <image mode="scaleToFill" src="/image/crown.png" class="crown" /> -->
+  <image mode="scaleToFill" src="{{avatar}}" class="crown" />
+  <view style="color:gray">消费金额</view>
+  <view class="amount">￥{{amount}}</view>
+</view>
+<view class="card_info">
+  <mp-cells>
+    <mp-cell value="余额" footer="{{balance}}元"></mp-cell>
+    <mp-cell value="积分" footer="{{credit}}"></mp-cell>
+  </mp-cells>
+</view>
+<view class="btn-group">
+  <button size="default" type="primary" bindtap="confirm" loading="{{paying}}" disabled="{{!afford}}">确认支付{{afford ? '' : '(余额不足)'}}</button>
+  <button wx:if="{{is_charge == 1}}" size="default" type="ghost" bindtap="showCharge">立即充值</button>
+</view>
+
+<charge id="chargeComponent" bindchargeSuccess="onChargeSuccess" card_no="{{card_no}}" />

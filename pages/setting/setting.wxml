@@ -1,0 +1,40 @@
+<view style="margin-top: 15px;" />
+<van-card
+  thumb="{{thumb}}"
+  title="{{person.per_name}}"
+  desc="{{person.per_phone}}"
+  bindtap="openModal"
+/>
+<view style="margin-top: 10px;" />
+<van-cell-group>
+  <van-cell is-link title="交易记录" link-type="navigateTo" url="/pages/setting/trade/trade" icon="after-sale" />
+  <van-cell is-link title="收银模式" link-type="navigateTo" url="/pages/setting/mode/mode" icon="setting-o" />
+  <!-- <van-cell is-link title="打印机设置" link-type="navigateTo" url="/pages/setting/printer/printer" icon="setting-o" /> -->
+  <!-- <van-cell is-link title="显示设置" link-type="navigateTo" url="/pages/setting/display/display" icon="desktop-o" /> -->
+  <van-cell is-link title="清除缓存" bind:click="clearCache" icon="replay" />
+  <!-- <van-cell is-link title="facelogin" bind:click="testfacelogin" />
+  <van-cell is-link title="wx.login" bind:click="testunionid" />
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">getUserInfo</button> -->
+</van-cell-group>
+<view style="margin-top: 10px;" />
+
+<button type="default" bind:click="logout" style="margin:0 10px;border: 1px solid #e64340; color: #e64340;">退出登录</button>
+<view style="text-align:center; color:#cdcdcd; padding:1em 0; font-size:small; position:absolute; left:0; bottom:0; width:100%;">IoT小程序 v{{version}}</view>
+
+<van-dialog
+  use-slot
+  show="{{modalOpened}}"
+  bind:close="onModalClose"
+>
+  <view style="margin:0px 0 10px 0; padding:0 1em 1em; text-align:left;">
+    <view class="modal-title">登录信息</view>
+    <view class="modal-content">
+      <text>
+        系统域名：{{config.API_URL}}\n
+        店员名称：{{person.per_name}}\n
+        店员手机：{{person.per_phone}}\n
+        商户名称：{{merchant.merchant_name}}
+      </text>
+    </view>
+  </view>
+</van-dialog>
