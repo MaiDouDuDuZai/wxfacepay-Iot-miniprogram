@@ -26,5 +26,3 @@ PC端后台：http://demo.tryyun.net
 
 # screenshot
 ![](https://images.gitee.com/uploads/images/2020/0526/151809_a7c58577_4857616.jpeg)
-
-### 如有疑问，欢迎交流QQ：746954832
